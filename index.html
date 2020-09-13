@@ -23,9 +23,11 @@
   function clock() {
     document.getElementById("view_clock").innerHTML = getNow();
   }
-  const d = new Date();
-  const start = d.sec();
-
+  var d = new Date();
+  var start = d.getSeconds();
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
   function getNow() {
     var now = new Date();
     var year = now.getFullYear();
@@ -34,7 +36,7 @@
     var hour = now.getHours();
     var min = now.getMinutes();
     var sec = now.getSeconds();
-    if (abs(sec - start) >= 30) {
+    if (Math.abs(sec - start) >= 30) {
       const n = getRandomInt(3);
       if (n == 0) {
         Push.create("腕立て伏せ10回");
