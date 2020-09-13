@@ -31,7 +31,14 @@
     var min = now.getMinutes();
     var sec = now.getSeconds();
     if (sec % 30 == 0) {
-      Push.create("腕立て伏せをしよう");
+      const n = getRandomInt(3);
+      if (n == 0) {
+        Push.create("腕立て伏せ10回");
+      } else if (n == 1) {
+        Push.create("スクワット10回");
+      } else {
+        Push.create("体幹1分");
+      }
     }
     //出力用
     var s =
