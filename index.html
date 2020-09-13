@@ -7,7 +7,8 @@
   </head>
   <body>
     <h1>Standup</h1>
-    <span id="view_clock"></span>
+    <span id="view_clock"></span><br />
+    <span id="start"></span>s
   </body>
   <script
     type="text/javascript"
@@ -22,11 +23,16 @@
 
   function clock() {
     document.getElementById("view_clock").innerHTML = getNow();
+    document.getElementById("start").innerHTML = start1();
   }
   var d = new Date();
   var start = d.getSeconds();
   function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
+  }
+  function start1() {
+    var now = new Date();
+    return Math.abs(start - now.getSeconds());
   }
   function getNow() {
     var now = new Date();
