@@ -4,69 +4,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Standup</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <h1>Standup</h1>
-    <span id="view_clock"></span><br />
-    <span id="start"></span>s
+    <!-- As a heading -->
+    <nav class="navbar navbar-light bg-light">
+      <span class="navbar-brand mb-0 h1">Standdddddddddddddup</span>
+    </nav>
+    <div class="container">
+      <img src="./5673.gif" alt="doggo" width="500" height="600" />
+    </div>
   </body>
   <script
     type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.7/push.min.js"
   ></script>
 </html>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    width: 100vw;
+  }
+</style>
 <script type="text/javascript">
   Push.create(
     "30分区切りで筋トレをうながしてくれるよ！！画面は開けたままにしよう"
   );
-  timerID = setInterval("clock()", 500); //0.5秒毎にclock()を実行
-
-  function clock() {
-    document.getElementById("view_clock").innerHTML = getNow();
-    document.getElementById("start").innerHTML = start1();
-  }
-  var d = new Date();
-  var start = d.getSeconds();
-  function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-  }
-  function start1() {
-    var now = new Date();
-    return Math.abs(start - now.getSeconds());
-  }
-  function getNow() {
-    var now = new Date();
-    var year = now.getFullYear();
-    var mon = now.getMonth() + 1; //１を足すこと
-    var day = now.getDate();
-    var hour = now.getHours();
-    var min = now.getMinutes();
-    var sec = now.getSeconds();
-    if (Math.abs(sec - start) >= 30) {
-      const n = getRandomInt(3);
-      if (n == 0) {
-        Push.create("腕立て伏せ10回");
-      } else if (n == 1) {
-        Push.create("スクワット10回");
-      } else {
-        Push.create("体幹1分");
-      }
-      start = sec;
-    }
-    //出力用
-    var s =
-      year +
-      "年" +
-      mon +
-      "月" +
-      day +
-      "日" +
-      hour +
-      "時" +
-      min +
-      "分" +
-      sec +
-      "秒";
-    return s;
-  }
+  var countup = function () {
+    Push.create("立ち上がって運動をしよう");
+  };
+  setInterval(countup, 1000 * 1800);
 </script>
