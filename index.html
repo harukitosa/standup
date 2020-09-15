@@ -32,7 +32,19 @@
       <span class="navbar-brand mb-0 h1">Standdddddddddddddup</span>
     </nav>
     <div class="container">
-      <img src="./5673.gif" alt="doggo" width="500" height="600" />
+      <div class="row">
+        <div class="col-sm">
+          <img src="./5673.gif" alt="doggo" width="500" height="600" />
+        </div>
+        <div class="col-sm">
+          standdddddddupは三十分に一回あなたに通知で筋トレを促してくれます。
+          スマートフォンではご利用になれません、お手持ちのパソコンのブラウザでお試しください。
+          リロードすると時間がリセットされてしまうので放置したまま作業に集中してください。
+          また、使用したいのであればchromeの通知を許可をお願いします。
+          通知されるまで残り
+          <span id="output"></span>秒
+        </div>
+      </div>
     </div>
   </body>
   <script
@@ -54,8 +66,27 @@
   Push.create(
     "30分区切りで筋トレをうながしてくれるよ！！画面は開けたままにしよう"
   );
-  var countup = function () {
-    Push.create("立ち上がって運動をしよう");
-  };
-  setInterval(countup, 1000 * 1800);
+
+  // カウントダウンする秒数
+  var sec = 1800;
+
+  // 開始日時を設定
+  var dt = new Date();
+  console.log("Start: ", dt);
+  var endDt = new Date(dt.getTime() + sec * 1000);
+  console.log("End : ", endDt);
+
+  var cnt = sec;
+  var id = setInterval(function () {
+    cnt--;
+    console.log(cnt);
+    dt = new Date();
+    target = document.getElementById("output");
+    target.innerHTML = cnt;
+    if (dt.getTime() > endDt.getTime()) {
+      Push.create("立ち上がって運動をしよう");
+      endDt = new Date(dt.getTime() + sec * 1000);
+      cnt = sec;
+    }
+  }, 1000);
 </script>
